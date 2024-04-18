@@ -1,8 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Pulpit tests', () => {
+
+  test.beforeEach(async ({ page }) => {
+    const url = 'https://demo-bank.vercel.app/'
+    await page.goto(url);
+
+});
+
   test('quick payment with correct data', async ({ page }) => {
-    await page.goto('https://demo-bank.vercel.app/');
+    //await page.goto('https://demo-bank.vercel.app/');
     await page.getByTestId('login-input').fill('tester1234');
     await page.getByTestId('password-input').fill('password');
     await page.getByTestId('login-button').click();
@@ -19,7 +26,7 @@ test.describe('Pulpit tests', () => {
   });
 
       test('Succesfully phone load with 20 PLN', async ({ page }) => {
-      await page.goto('https://demo-bank.vercel.app/');
+     // await page.goto('https://demo-bank.vercel.app/');
       await page.getByTestId('login-input').fill('tester12');
       await page.getByTestId('password-input').fill('password');
       await page.getByTestId('login-button').click();
