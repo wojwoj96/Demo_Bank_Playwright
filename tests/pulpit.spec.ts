@@ -35,6 +35,8 @@ test.describe('Pulpit tests', () => {
     const phoneNumberfromList = '500 xxx xxx'
     const amountPhoneLoader = '20'
     const expectedPhoneTopUpMessage = 'Doładowanie wykonane! 20,00PLN na numer 500 xxx xxx'
+    const initialBalanc = await page.locator('#money_value').innerText();
+    const expectedBAlance = Number(initialBalanc) - Number(amountPhoneLoader);
 
     await page.locator('#widget_1_topup_receiver').selectOption(phoneNumberfromList);
     await page.locator('#widget_1_topup_amount').fill(amountPhoneLoader);
